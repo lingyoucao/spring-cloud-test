@@ -1,0 +1,32 @@
+spring:
+    application:
+        name: ms-provider
+
+eureka:
+  preferSameZone: true
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    availability-zones:
+      us-east-1: test
+    region: us-east-1
+
+server:
+  port: 8080
+
+#management:
+#  security:
+#    enabled: false
+#  port: 8081
+
+hystrix:
+  enabled: true
+
+endpoints:
+  shutdown:
+    enabled: true
+
+#info:
+#  build:
+#    artifactId: @project.artifactId@
+#    version: @project.version@

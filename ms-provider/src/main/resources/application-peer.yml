@@ -1,0 +1,34 @@
+spring:
+    application:
+        name: ms-provider
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/,http://localhost:8762/eureka/,http://localhost:8763/eureka/
+  instance:
+    metadata-map:
+      zone: abc
+      testkey: xyz
+
+server:
+  port: 8080
+
+#management:
+#  security:
+#    enabled: false
+#  port: 8081
+
+hystrix:
+  enabled: true
+
+endpoints:
+  shutdown:
+    enabled: true
+
+#info:
+#  build:
+#    artifactId: @project.artifactId@
+#    version: @project.version@
+
+

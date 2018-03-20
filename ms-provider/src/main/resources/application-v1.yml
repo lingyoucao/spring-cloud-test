@@ -1,0 +1,15 @@
+spring:
+    application:
+        name: ms-provider-v1
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    metadata-map:
+      zone: abc
+      testkey: xyz
+
+server:
+  port: 8080
