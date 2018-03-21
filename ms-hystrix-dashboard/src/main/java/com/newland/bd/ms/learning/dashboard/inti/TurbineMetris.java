@@ -1,4 +1,4 @@
-package com.newland.bd.ms.learning.dashboard;
+package com.newland.bd.ms.learning.dashboard.inti;
 
 import com.netflix.turbine.data.AggDataFromCluster;
 import com.netflix.turbine.monitor.cluster.ClusterMonitor;

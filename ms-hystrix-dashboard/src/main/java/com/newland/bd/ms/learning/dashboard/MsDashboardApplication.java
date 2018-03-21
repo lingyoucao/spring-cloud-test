@@ -1,5 +1,6 @@
 package com.newland.bd.ms.learning.dashboard;
 
+import com.newland.bd.ms.learning.dashboard.inti.TurbineMetris;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
