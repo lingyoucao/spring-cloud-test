@@ -1,6 +1,6 @@
 package com.newland.bd.ms.learning.dashboard;
 
-import com.newland.bd.ms.learning.dashboard.inti.TurbineMetris;
+import com.newland.bd.ms.learning.dashboard.init.MetricsInit;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
@@ -17,6 +17,6 @@ public class MsDashboardApplication {
 	// 多台监控（通过turbine）：http://localhost:10000/turbine.stream
 	public static void main(String[] args) {
 		SpringApplication.run(MsDashboardApplication.class, args);
-		TurbineMetris.start();
+		MetricsInit.start();
 	}
 }

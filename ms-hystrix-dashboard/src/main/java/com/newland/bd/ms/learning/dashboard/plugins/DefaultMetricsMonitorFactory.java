@@ -3,29 +3,29 @@ package com.newland.bd.ms.learning.dashboard.plugins;
 import com.newland.bd.ms.learning.dashboard.data.DataFromMetricsAggregator;
 import com.newland.bd.ms.learning.dashboard.handler.DataBaseDataHandler;
 import com.newland.bd.ms.learning.dashboard.monitor.MetricsMonitor;
-import com.newland.bd.ms.learning.dashboard.monitor.MetrisMonitorFactory;
+import com.newland.bd.ms.learning.dashboard.monitor.MetricsMonitorFactory;
 
 /**
  * Created by lcs on 2018/3/21.
  *
  * @author lcs
  */
-public class DefaultMetricsMonitorFactory implements MetrisMonitorFactory {
+public class DefaultMetricsMonitorFactory implements MetricsMonitorFactory {
     private static MetricsMonitor monitor;
     private DataBaseDataHandler<DataFromMetricsAggregator> dbDataHandler = new DataBaseDataHandler<DataFromMetricsAggregator>();
     @Override
-    public MetricsMonitor getMetrisMonitor() {
+    public MetricsMonitor getMetricsMonitor() {
         return monitor;
     }
 
     @Override
-    public void initMetrisMonitor() {
+    public void initMetricsMonitor() {
         MetricsMonitor monitor = init();
-        monitor.registerListenertoClusterMonitor(dbDataHandler);
+        monitor.registerListenerToClusterMonitor(dbDataHandler);
     }
 
     @Override
-    public void shutdownMetrisMonitors() {
+    public void shutdownMetricsMonitor() {
         monitor.stopMonitor();
         monitor.getDispatcher().stopDispatcher();
     }

@@ -16,8 +16,6 @@ import java.util.Map;
  */
 public class DataFromMetricsAggregator extends TurbineData{
 
-    private Instance host;
-
     private ThreadPoolsData threadPoolsData;
     private CircuitData circuitData;
     public DataFromMetricsAggregator(TurbineDataMonitor<DataFromMetricsAggregator> monitor,

@@ -1,4 +1,4 @@
-package com.newland.bd.ms.learning.dashboard.inti;
+package com.newland.bd.ms.learning.dashboard.init;
 
 import com.netflix.turbine.data.AggDataFromCluster;
 import com.netflix.turbine.monitor.cluster.ClusterMonitor;
@@ -6,9 +6,9 @@ import com.netflix.turbine.monitor.cluster.ClusterMonitorFactory;
 import com.netflix.turbine.plugins.PluginsFactory;
 import com.newland.bd.ms.learning.dashboard.handler.MetricsAggregatorDataHandler;
 import com.newland.bd.ms.learning.dashboard.monitor.MetricsMonitor;
-import com.newland.bd.ms.learning.dashboard.monitor.MetrisMonitorFactory;
+import com.newland.bd.ms.learning.dashboard.monitor.MetricsMonitorFactory;
 import com.newland.bd.ms.learning.dashboard.plugins.DefaultMetricsMonitorFactory;
-import com.newland.bd.ms.learning.dashboard.plugins.MetrisPluginsFactory;
+import com.newland.bd.ms.learning.dashboard.plugins.MetricsPluginsFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,18 +17,18 @@ import org.slf4j.LoggerFactory;
  *
  * @author lcs
  */
-public class TurbineMetris {
-    private final static Logger logger = LoggerFactory.getLogger(TurbineMetris.class);
+public class MetricsInit {
+    private final static Logger logger = LoggerFactory.getLogger(MetricsInit.class);
 
     public static void start() {
         try {
             //指标监控工厂
-            MetrisMonitorFactory metrisMonitorFactory = MetrisPluginsFactory.getMetrisMonitorFactory();
+            MetricsMonitorFactory metrisMonitorFactory = MetricsPluginsFactory.getMetrisMonitorFactory();
             if(metrisMonitorFactory == null) {
-                MetrisPluginsFactory.setMetrisMonitorFactory(new DefaultMetricsMonitorFactory());
+                MetricsPluginsFactory.setMetrisMonitorFactory(new DefaultMetricsMonitorFactory());
             }
-            MetrisPluginsFactory.getMetrisMonitorFactory().initMetrisMonitor();
-            MetricsMonitor metricsMonitor =  MetrisPluginsFactory.getMetrisMonitorFactory().getMetrisMonitor();
+            MetricsPluginsFactory.getMetrisMonitorFactory().initMetricsMonitor();
+            MetricsMonitor metricsMonitor =  MetricsPluginsFactory.getMetrisMonitorFactory().getMetricsMonitor();
 
 
             //TODO 集群名称先采用默认

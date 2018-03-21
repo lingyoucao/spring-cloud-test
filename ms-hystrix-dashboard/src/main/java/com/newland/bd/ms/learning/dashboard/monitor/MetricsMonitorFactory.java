@@ -3,20 +3,21 @@ package com.newland.bd.ms.learning.dashboard.monitor;
 /**
  * @author lcs
  */
-public interface MetrisMonitorFactory {
+public interface MetricsMonitorFactory {
 
     /**
+     * 获取指标监控
      * @return {@link MetricsMonitor}<T>
      */
-    MetricsMonitor getMetrisMonitor();
+    MetricsMonitor getMetricsMonitor();
 
     /**
      * Init all the necessary cluster monitors
      */
-    void initMetrisMonitor();
+    void initMetricsMonitor();
 
     /**
      * shutdown all the necessary cluster monitors
      */
-    void shutdownMetrisMonitors();
+    void shutdownMetricsMonitor();
 }

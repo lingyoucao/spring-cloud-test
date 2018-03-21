@@ -19,19 +19,21 @@ public class MetricsMonitor extends TurbineDataMonitor<DataFromMetricsAggregator
 
     protected final Instance statsInstance;
 
+    private String name;
+
     public MetricsMonitor(String name) {
         this.statsInstance = new Instance(name, "metrics_monitor", true);
+        this.name = name;
     }
 
     @Override
     public String getName() {
-        return null;
+        return this.name;
     }
 
     @Override
     public void startMonitor() throws Exception {
 
-        //getDispatcher().pushData(statsInstance,new DataFromMetricsAggregator("a"));
     }
 
     @Override
@@ -49,7 +51,7 @@ public class MetricsMonitor extends TurbineDataMonitor<DataFromMetricsAggregator
         return statsInstance;
     }
 
-    public void registerListenertoClusterMonitor(TurbineDataHandler<DataFromMetricsAggregator> eventHandler) {
+    public void registerListenerToClusterMonitor(TurbineDataHandler<DataFromMetricsAggregator> eventHandler) {
 
         TurbineDataHandler<DataFromMetricsAggregator> oldHandler = getDispatcher().findHandlerForHost(getStatsInstance(), eventHandler.getName());
         if (oldHandler == null) {
