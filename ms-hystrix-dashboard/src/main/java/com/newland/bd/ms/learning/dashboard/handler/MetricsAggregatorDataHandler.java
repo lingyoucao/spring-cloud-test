@@ -1,9 +1,11 @@
-package com.newland.bd.ms.learning.dashboard;
+package com.newland.bd.ms.learning.dashboard.handler;
 
 import com.netflix.turbine.data.TurbineData;
 import com.netflix.turbine.discovery.Instance;
 import com.netflix.turbine.handler.PerformanceCriteria;
 import com.netflix.turbine.handler.TurbineDataHandler;
+import com.newland.bd.ms.learning.dashboard.data.DataFromMetricsAggregator;
+import com.newland.bd.ms.learning.dashboard.monitor.MetricsMonitor;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.ObjectWriter;
 import org.codehaus.jackson.util.MinimalPrettyPrinter;
@@ -11,26 +13,25 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * Created by lcs on 2018/3/20.
  *
  * @author lcs
  */
-public class MetricsAggregatorDataHandler <T extends TurbineData> implements TurbineDataHandler<T> {
+public class MetricsAggregatorDataHandler<T extends TurbineData> implements TurbineDataHandler<T> {
     private final static Logger logger = LoggerFactory.getLogger(MetricsAggregatorDataHandler.class);
 
     private final PerformanceCriteria perfCriteria;
     protected final String name;
     private final ObjectWriter objectWriter;
+    private MetricsMonitor monitor;
 
-    public MetricsAggregatorDataHandler() {
+    public MetricsAggregatorDataHandler(MetricsMonitor monitor) {
         this.perfCriteria = new MetricsAggregatorPerformanceCriteria();
         this.name = "MetricsAggregatorHandler_" + UUID.randomUUID().toString();
+        this.monitor = monitor;
 
         ObjectMapper objectMapper = new ObjectMapper();
 
@@ -46,6 +47,15 @@ public class MetricsAggregatorDataHandler <T extends TurbineData> implements Tur
     @Override
     public void handleData(Collection<T> data) {
         print(data);
+        DataFromMetricsAggregator instanceData = new DataFromMetricsAggregator(this.monitor, "db", "a", 1522468462L);
+        List<DataFromMetricsAggregator> list = new ArrayList<DataFromMetricsAggregator>();
+        instanceData.setCreationTime(1522468462L);
+        list.add(instanceData);
+        writeToTuple(list);
+    }
+
+    private void writeToTuple(Collection<DataFromMetricsAggregator> dataCollection) {
+        monitor.getDispatcher().pushData(monitor.getStatsInstance(), dataCollection);
     }
 
     protected void print(Collection<? extends TurbineData> dataCollection) {
@@ -80,8 +90,9 @@ public class MetricsAggregatorDataHandler <T extends TurbineData> implements Tur
     }
 
 
-
-
+    public MetricsMonitor getMetricsMonitor() {
+        return this.monitor;
+    }
 
 
     private class MetricsAggregatorPerformanceCriteria implements PerformanceCriteria {
@@ -93,7 +104,7 @@ public class MetricsAggregatorDataHandler <T extends TurbineData> implements Tur
 
         @Override
         public int getMaxQueueSize() {
-            return 1000;
+            return 10000;
         }
 
         @Override
