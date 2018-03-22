@@ -25,8 +25,8 @@ public class DataBaseDataHandler<T extends TurbineData> implements TurbineDataHa
     private final PerformanceCriteria perfCriteria;
 
     public DataBaseDataHandler() {
-        this.name = "DBHandler_" + UUID.randomUUID().toString();
-        this.perfCriteria = new DBPerformanceCriteria();
+        this.name = "DataBaseHandler_" + UUID.randomUUID().toString();
+        this.perfCriteria = new DataBasePerformanceCriteria();
     }
 
     @Override
@@ -55,7 +55,7 @@ public class DataBaseDataHandler<T extends TurbineData> implements TurbineDataHa
 
 
 
-    private class DBPerformanceCriteria implements PerformanceCriteria {
+    private class DataBasePerformanceCriteria implements PerformanceCriteria {
 
         @Override
         public boolean isCritical() {

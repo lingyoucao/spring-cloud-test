@@ -6,18 +6,18 @@ package com.newland.bd.ms.learning.dashboard.monitor;
 public interface MetricsMonitorFactory {
 
     /**
-     * 获取指标监控
+     * get metrics monitors
      * @return {@link MetricsMonitor}<T>
      */
     MetricsMonitor getMetricsMonitor();
 
     /**
-     * Init all the necessary cluster monitors
+     * Init all the necessary metrics monitors
      */
     void initMetricsMonitor();
 
     /**
-     * shutdown all the necessary cluster monitors
+     * shutdown all the necessary metrics monitors
      */
     void shutdownMetricsMonitor();
 }

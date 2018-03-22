@@ -63,6 +63,21 @@ public class MetricsAggregatorDataHandler<T extends TurbineData> implements Turb
             for (TurbineData data : dataCollection) {
                 Map<String, Object> attrs = data.getAttributes();
                 HashMap<String, Map<String, ? extends Number>> nestedAttrs = data.getNestedMapAttributes();
+
+                Map<String, Object> dataMap = new HashMap<>(16);
+                HashMap<String, String> stringAttributes = data.getStringAttributes();
+                if (stringAttributes != null) {
+                    for (String key : stringAttributes.keySet()) {
+                        String value = stringAttributes.get(key);
+                        if (value.equals("true") || value.equals("false")) {
+                            dataMap.put(key, Boolean.valueOf(value));
+                        } else {
+                            dataMap.put(key, value);
+                        }
+                    }
+                }
+
+
                 if (nestedAttrs != null && nestedAttrs.keySet().size() > 0) {
                     for (String nestedMapKey : nestedAttrs.keySet()) {
                         Map<String, ? extends Number> nestedMap = nestedAttrs.get(nestedMapKey);

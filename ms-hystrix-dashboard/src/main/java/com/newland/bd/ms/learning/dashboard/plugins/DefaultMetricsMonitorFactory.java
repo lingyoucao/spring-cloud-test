@@ -12,7 +12,7 @@ import com.newland.bd.ms.learning.dashboard.monitor.MetricsMonitorFactory;
  */
 public class DefaultMetricsMonitorFactory implements MetricsMonitorFactory {
     private static MetricsMonitor monitor;
-    private DataBaseDataHandler<DataFromMetricsAggregator> dbDataHandler = new DataBaseDataHandler<DataFromMetricsAggregator>();
+    private DataBaseDataHandler<DataFromMetricsAggregator> dbDataHandler = new DataBaseDataHandler<>();
     @Override
     public MetricsMonitor getMetricsMonitor() {
         return monitor;

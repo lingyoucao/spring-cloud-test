@@ -7,14 +7,14 @@ import com.newland.bd.ms.learning.dashboard.monitor.MetricsMonitorFactory;
  */
 public class MetricsPluginsFactory {
 
-    private static MetricsMonitorFactory metrisMonitorFactory;
+    private static MetricsMonitorFactory metricsMonitorFactory;
 
-    public static MetricsMonitorFactory getMetrisMonitorFactory() {
-        return metrisMonitorFactory;
+    public static MetricsMonitorFactory getMetricsMonitorFactory() {
+        return metricsMonitorFactory;
     }
 
-    public static void setMetrisMonitorFactory(MetricsMonitorFactory metrisMonitorFactory) {
-        MetricsPluginsFactory.metrisMonitorFactory = metrisMonitorFactory;
+    public static void setMetricsMonitorFactory(MetricsMonitorFactory factory) {
+        metricsMonitorFactory = factory;
     }
 
 }

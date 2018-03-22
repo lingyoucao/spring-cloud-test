@@ -23,12 +23,12 @@ public class MetricsInit {
     public static void start() {
         try {
             //指标监控工厂
-            MetricsMonitorFactory metrisMonitorFactory = MetricsPluginsFactory.getMetrisMonitorFactory();
-            if(metrisMonitorFactory == null) {
-                MetricsPluginsFactory.setMetrisMonitorFactory(new DefaultMetricsMonitorFactory());
+            MetricsMonitorFactory metricsMonitorFactory = MetricsPluginsFactory.getMetricsMonitorFactory();
+            if(metricsMonitorFactory == null) {
+                MetricsPluginsFactory.setMetricsMonitorFactory(new DefaultMetricsMonitorFactory());
             }
-            MetricsPluginsFactory.getMetrisMonitorFactory().initMetricsMonitor();
-            MetricsMonitor metricsMonitor =  MetricsPluginsFactory.getMetrisMonitorFactory().getMetricsMonitor();
+            MetricsPluginsFactory.getMetricsMonitorFactory().initMetricsMonitor();
+            MetricsMonitor metricsMonitor =  MetricsPluginsFactory.getMetricsMonitorFactory().getMetricsMonitor();
 
 
             //TODO 集群名称先采用默认
@@ -48,9 +48,9 @@ public class MetricsInit {
             clusterMonitor.registerListenertoClusterMonitor(metricsAggregatorDataHandler);
             clusterMonitor.startMonitor();
         } catch(Exception e) {
-            logger.info("Caught ex. Stopping StreamingConnection", e);
+            logger.info("Caught ex. Stopping metrics monitor", e);
         } catch(Throwable  t) {
-            logger.info("Caught throwable. StreamingConnection", t);
+            logger.info("Caught throwable. metrics monitor", t);
         } finally {
 
         }
