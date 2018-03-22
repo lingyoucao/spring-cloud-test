@@ -51,7 +51,7 @@ public class MetricsMonitor extends TurbineDataMonitor<DataFromMetricsAggregator
         return statsInstance;
     }
 
-    public void registerListenerToClusterMonitor(TurbineDataHandler<DataFromMetricsAggregator> eventHandler) {
+    public void registerListenerToMetricsMonitor(TurbineDataHandler<DataFromMetricsAggregator> eventHandler) {
 
         TurbineDataHandler<DataFromMetricsAggregator> oldHandler = getDispatcher().findHandlerForHost(getStatsInstance(), eventHandler.getName());
         if (oldHandler == null) {

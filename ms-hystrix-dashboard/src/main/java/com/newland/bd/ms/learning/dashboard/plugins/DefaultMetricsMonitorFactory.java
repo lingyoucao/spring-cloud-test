@@ -21,7 +21,7 @@ public class DefaultMetricsMonitorFactory implements MetricsMonitorFactory {
     @Override
     public void initMetricsMonitor() {
         MetricsMonitor monitor = init();
-        monitor.registerListenerToClusterMonitor(dbDataHandler);
+        monitor.registerListenerToMetricsMonitor(dbDataHandler);
     }
 
     @Override
