@@ -5,7 +5,7 @@ package com.newland.bd.ms.learning.dashboard.model;
  *
  * @author lcs
  */
-public class Latency {
+public class LatencyData {
     private String m0;
     private String m99;
     private String m100;

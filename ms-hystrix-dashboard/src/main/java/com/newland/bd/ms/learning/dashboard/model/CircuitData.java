@@ -28,12 +28,12 @@ public class CircuitData {
     private String errorCount;
     private String rollingCountSemaphoreRejected;
     private String group;
-    private Latency latencyTotal;
+    private LatencyData latencyTotal;
     private String requestCount;
     private String rollingCountCollapsedRequests;
     private String rollingCountShortCircuited;
     private String propertyValueCircuitBreakerSleepWindowInMilliseconds;
-    private Latency latencyExecute;
+    private LatencyData latencyExecute;
     private String rollingCountEmit;
     private String currentConcurrentExecutionCount;
     private String propertyValueExecutionIsolationSemaphoreMaxConcurrentRequests;
@@ -225,11 +225,11 @@ public class CircuitData {
         this.group = group;
     }
 
-    public Latency getLatencyTotal() {
+    public LatencyData getLatencyTotal() {
         return latencyTotal;
     }
 
-    public void setLatencyTotal(Latency latencyTotal) {
+    public void setLatencyTotal(LatencyData latencyTotal) {
         this.latencyTotal = latencyTotal;
     }
 
@@ -265,11 +265,11 @@ public class CircuitData {
         this.propertyValueCircuitBreakerSleepWindowInMilliseconds = propertyValueCircuitBreakerSleepWindowInMilliseconds;
     }
 
-    public Latency getLatencyExecute() {
+    public LatencyData getLatencyExecute() {
         return latencyExecute;
     }
 
-    public void setLatencyExecute(Latency latencyExecute) {
+    public void setLatencyExecute(LatencyData latencyExecute) {
         this.latencyExecute = latencyExecute;
     }
 
