@@ -6,7 +6,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
 import org.springframework.cloud.netflix.turbine.EnableTurbine;
 import org.springframework.cloud.netflix.turbine.TurbineClustersProvider;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
@@ -19,9 +18,7 @@ public class MsDashboardApplication {
 	// 单台监控：在界面输入 http://localhost:10000/hystrix  还是
 	// 多台监控（通过turbine）：http://localhost:10000/turbine.stream
 	public static void main(String[] args) {
-		ConfigurableApplicationContext ac = SpringApplication.run(MsDashboardApplication.class, args);
-		TurbineClustersProvider provider = (TurbineClustersProvider) ac.getBean("clustersProvider");
-		System.out.println(provider.getClusterNames());
+		SpringApplication.run(MsDashboardApplication.class, args);
 		MetricsInit.start();
 	}
 }
