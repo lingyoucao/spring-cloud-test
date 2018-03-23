@@ -18,12 +18,8 @@ public class DataFromMetricsAggregator extends TurbineData{
 
     private ThreadPoolsData threadPoolsData;
     private CircuitData circuitData;
-    public DataFromMetricsAggregator(TurbineDataMonitor<DataFromMetricsAggregator> monitor,
-                                  String type,
-                                  String name,
-                                  long dateTime) {
-        super(monitor, type, name);
-        super.setCreationTime(dateTime);
+    public DataFromMetricsAggregator(String type, String name) {
+        super(null, type, name);
     }
 
 
