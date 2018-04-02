@@ -52,7 +52,7 @@ public class MetricsInit {
             MetricsPluginsFactory.getMetricsMonitorFactory().initMetricsMonitor();
             MetricsMonitor metricsMonitor =  MetricsPluginsFactory.getMetricsMonitorFactory().getMetricsMonitor();
             //集群数据处理，进行指标汇总聚合。
-            MetricsAggregatorDataHandler<AggDataFromCluster> metricsAggregatorDataHandler = new MetricsAggregatorDataHandler(metricsMonitor);
+            MetricsAggregatorDataHandler metricsAggregatorDataHandler = new MetricsAggregatorDataHandler(metricsMonitor);
 
             /*********注册Turbine客户端**********/
 

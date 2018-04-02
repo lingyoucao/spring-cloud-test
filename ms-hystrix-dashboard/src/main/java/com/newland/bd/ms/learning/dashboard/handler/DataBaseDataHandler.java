@@ -8,6 +8,7 @@ import com.netflix.turbine.handler.PerformanceCriteria;
 import com.netflix.turbine.handler.TurbineDataHandler;
 import com.newland.bd.ms.learning.dashboard.data.DataFromMetricsAggregator;
 import com.newland.bd.ms.learning.dashboard.model.CircuitData;
+import com.newland.bd.ms.learning.dashboard.model.Result;
 import com.newland.bd.ms.learning.dashboard.model.ThreadPoolsData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,7 +23,7 @@ import java.util.UUID;
  *
  * @author lcs
  */
-public class DataBaseDataHandler<T extends TurbineData> implements TurbineDataHandler<T>  {
+public class DataBaseDataHandler implements TurbineDataHandler<DataFromMetricsAggregator>  {
 
 
     private final static Logger logger = LoggerFactory.getLogger(DataBaseDataHandler.class);
@@ -42,7 +43,7 @@ public class DataBaseDataHandler<T extends TurbineData> implements TurbineDataHa
     }
 
     @Override
-    public void handleData(Collection<T> stats) {
+    public void handleData(Collection<DataFromMetricsAggregator> stats) {
         writeToDb(stats);
     }
 
@@ -57,8 +58,8 @@ public class DataBaseDataHandler<T extends TurbineData> implements TurbineDataHa
     }
 
 
-    public void writeToDb(Collection<? extends TurbineData> dataCollection) {
-        for (TurbineData d : dataCollection) {
+    public void writeToDb(Collection<DataFromMetricsAggregator> dataCollection) {
+        /*for (TurbineData d : dataCollection) {
             DataFromMetricsAggregator data = (DataFromMetricsAggregator) d;
 
             if(data.getCircuitData() != null) {
@@ -67,6 +68,10 @@ public class DataBaseDataHandler<T extends TurbineData> implements TurbineDataHa
             if(data.getThreadPoolsData() != null) {
                 logger.info("ThreadPoolsData=" + JSON.toJSONString(data.getThreadPoolsData()));
             }
+        }*/
+
+        for (DataFromMetricsAggregator d : dataCollection) {
+            logger.info("统计结果是："+JSON.toJSONString(d.getAttributes()));
         }
     }
 
