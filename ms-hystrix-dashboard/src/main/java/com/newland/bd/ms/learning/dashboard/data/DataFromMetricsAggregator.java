@@ -1,12 +1,7 @@
 package com.newland.bd.ms.learning.dashboard.data;
 
 import com.alibaba.fastjson.JSON;
-import com.netflix.turbine.data.AggDataFromCluster;
-import com.netflix.turbine.data.StatsRollingNumber;
 import com.netflix.turbine.data.TurbineData;
-import com.newland.bd.ms.learning.dashboard.model.CircuitData;
-import com.newland.bd.ms.learning.dashboard.model.Result;
-import com.newland.bd.ms.learning.dashboard.model.ThreadPoolsData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
