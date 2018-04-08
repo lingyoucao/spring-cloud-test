@@ -31,13 +31,15 @@ public class MsController {
             ,@HystrixProperty(name="hystrix.command.HystrixCommandKey.metrics.healthSnapshot.intervalInMilliseconds",value="7777")
 
     })*/
-    @HystrixCommand(fallbackMethod = "helloexFallback",threadPoolKey="haha",commandProperties={@HystrixProperty(name="metrics.healthSnapshot.intervalInMilliseconds",value="3000")
-
-    })
+    @HystrixCommand(fallbackMethod = "helloexFallback",groupKey = "newland", threadPoolKey="newland")
     public String hellosleep() throws InterruptedException {
         int i = 2000;
         TimeUnit.MILLISECONDS.sleep(i);
         return "provide hellosleep world!";
+    }
+
+    public String helloFallback() {
+        return "helloFallback";
     }
 
     public String helloexFallback() {
@@ -46,7 +48,7 @@ public class MsController {
 
     @GetMapping("/hellopex")
     @HystrixCommand(fallbackMethod = "helloFallbackMethod")
-    public String helloex(@RequestParam String str) {
+    public String helloex() {
         logger.info("☆☆☆ helloex before!");
         int i = 20;
         logger.info("☆☆☆ i = {}", i);
@@ -57,6 +59,24 @@ public class MsController {
         }
         logger.info("☆☆☆ helloex after!");
         return "provide helloex world!";
+    }
+
+    @GetMapping("/helloRandom")
+    @HystrixCommand(fallbackMethod = "helloRandomFallbackMethod")
+    public String helloRandom() {
+        logger.info("☆☆☆ helloRandom before!");
+        long i = Math.round(Math.random()*4*1000) ;
+        logger.info("☆☆☆ i = {}", i);
+        try {
+            Thread.sleep(i);
+        } catch (InterruptedException e) {
+        }
+        logger.info("☆☆☆ helloRandom after!");
+        return "hello Random world!";
+    }
+
+    public String helloRandomFallbackMethod() {
+        return "helloRandom Fallback!";
     }
 
     public String helloexFallbackWithParameter(String str) {
